@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ import com.zara.testZata.model.PricesModel;
  */
 @Service
 public class PricesService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(PricesService.class);
 
 	@Autowired
 	private PricesQueryDslRepository pricesQueryDslRepository;
@@ -35,6 +39,9 @@ public class PricesService {
 	 * @return PricesModel
 	 */
 	public PricesModel getPriceByDate(Date date, long productId, long brandId) {
+		
+		LOGGER.info("getPriceByDate -- Obteniendo precio para los datos: Id producto: " + productId + ", cadena: " + brandId + ", fecha" + date.toString());
+		
 		return utils.buildPriceModel(Collections.max(pricesQueryDslRepository.getPriceByDate(date, productId, brandId), Comparator.comparing(c -> c.getPriority())));
 	}
 }

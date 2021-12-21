@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.impl.JPAQuery;
@@ -19,6 +21,8 @@ import com.zara.testZara.entity.QPrices;
  */
 @Repository
 public class PricesQueryDslRepository {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(PricesQueryDslRepository.class);
 
 	private QPrices qPrices = QPrices.prices;
 
@@ -35,6 +39,8 @@ public class PricesQueryDslRepository {
 	 * @return lista de precios
 	 */
 	public List<Prices> getPriceByDate(Date date, long productId, long brandId) {
+		
+		LOGGER.info("getPriceByDate -- Obteniendo de bbdd los registros para los datos: Id producto: " + productId + ", cadena: " + brandId + ", fecha" + date.toString());
 
 		JPAQuery<Prices> query = new JPAQuery<Prices>(em);
 

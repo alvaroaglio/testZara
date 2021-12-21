@@ -2,6 +2,8 @@ package com.zara.testZara.controller;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,8 @@ import com.zara.testZata.model.PricesModel;
 @Validated
 @RequestMapping("/prices")
 public class PricesController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(PricesController.class);
 
 	@Autowired
 	private PricesService pricesService;
@@ -41,10 +45,17 @@ public class PricesController {
 	@GetMapping(value = "/getPrice", produces = "application/json")
 	public ResponseEntity<PricesModel> getPriceByDate(@RequestParam(name = "productId") long productId, @RequestParam(name = "brandId") long brandId, @RequestParam(name = "date") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date) {
 
+		LOGGER.info("getPriceByDate -- Obteniendo precio para los datos: Id producto: " + productId + ", cadena: " + brandId + ", fecha" + date.toString());
+		
 		try {			
+			
 			return new ResponseEntity<PricesModel>(pricesService.getPriceByDate(date, productId, brandId), HttpStatus.OK);
+			
 		} catch (Exception e) {
+			
+			LOGGER.error("getPriceByDate -- Error al obtener el precio para los datos: Id producto: " + productId + ", cadena: " + brandId + ", fecha" + date.toString(), e.getMessage());
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Exception", e);
+			
 		}
 
 	}
