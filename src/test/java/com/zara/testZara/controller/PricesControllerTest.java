@@ -13,8 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.zara.testZara.service.PricesService;
-
 /**
  * 
  * @author Álvaro Aglio Sánchez
@@ -27,9 +25,6 @@ public class PricesControllerTest {
 	
 	@Autowired
 	private PricesController pricesController;
-	
-	@Autowired
-	private PricesService pricesService;
 	
 	@BeforeEach
 	public void setUp() {
