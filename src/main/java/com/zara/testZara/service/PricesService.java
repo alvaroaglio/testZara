@@ -38,7 +38,7 @@ public class PricesService {
 	 * 
 	 * @return PricesModel
 	 */
-	public PricesModel getPriceByDate(Date date, long productId, long brandId) {
+	public PricesModel getPriceByDate(Date date, long productId, long brandId) throws Exception {
 		
 		LOGGER.info("getPriceByDate -- Obteniendo precio para los datos: Id producto: " + productId + ", cadena: " + brandId + ", fecha" + date.toString());
 		
