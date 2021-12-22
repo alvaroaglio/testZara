@@ -2,6 +2,8 @@ package com.zara.testZata.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * 
  * @author Álvaro Aglio Sánchez
@@ -13,7 +15,9 @@ public class PricesModel {
 	private long brandId;
 	private long priceList;
 	private double price;
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
 	private Date startDate;
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
 	private Date endDate;
 	
 	/**

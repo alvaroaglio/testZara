@@ -1,5 +1,6 @@
 package com.zara.testZara.controller;
 
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,6 +48,7 @@ public class PricesControllerTest {
 		System.out.println("Datos obtenidos: " + content);
 		System.out.println("Precio correspondiente al producto para la fecha indicada: " + jObject.get("price"));
 		System.out.println("<--------------------------------------------------->");
+		assertEquals(jObject.get("priceList"), 1);
 	}
 	
 	/**
@@ -65,6 +67,7 @@ public class PricesControllerTest {
 		System.out.println("Datos obtenidos: " + content);
 		System.out.println("Precio conrrespondiente al producto para la fecha indicada: " + jObject.get("price"));
 		System.out.println("<--------------------------------------------------->");
+		assertEquals(jObject.get("priceList"), 2);
 	}
 	
 	/**
@@ -83,6 +86,7 @@ public class PricesControllerTest {
 		System.out.println("Datos obtenidos: " + content);
 		System.out.println("Precio correspondiente al producto para la fecha indicada: " + jObject.get("price"));
 		System.out.println("<--------------------------------------------------->");
+		assertEquals(jObject.get("priceList"), 1);
 	}
 	
 	/**
@@ -101,6 +105,7 @@ public class PricesControllerTest {
 		System.out.println("Datos obtenidos: " + content);
 		System.out.println("Precio correspondiente al producto para la fecha indicada: " + jObject.get("price"));
 		System.out.println("<--------------------------------------------------->");
+		assertEquals(jObject.get("priceList"), 3);
 	}
 	
 	/**
@@ -119,5 +124,6 @@ public class PricesControllerTest {
 		System.out.println("Datos obtenidos: " + content);
 		System.out.println("Precio correspondiente al producto para la fecha indicada: " + jObject.get("price"));
 		System.out.println("<--------------------------------------------------->");
+		assertEquals(jObject.get("priceList"), 4);
 	}
 }
